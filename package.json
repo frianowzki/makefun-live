@@ -1,0 +1,7 @@
+{
+  "name": "makefun-fieldnotes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node scripts/verify.mjs", "start": "node serve.ts --port 8127", "artifact": "node main.ts"}
+}
