@@ -1,0 +1,13 @@
+.vercel
+.env*
+out/
+test-out/
+node_modules/
+credentials*
+*.pem
+*keypair*.json
+evidence/
+*.log
+tmp/
+.makefun/*
+!.makefun/owner.json

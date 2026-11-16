@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="A fast, read-only board of the live make.fun bounties: pot, entry fee, time left and entries at a glance.">
+<title>make.fun — live bounty board</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="main.js"></script>
+</head>
+<body>
+<a class="skip" href="#/main">Skip to content</a>
+
+<header class="bar">
+  <a class="mark" href="#/" aria-label="make.fun board, home">
+    <span class="mark-dot" aria-hidden="true"></span><span class="mark-word">make<span class="mark-fun">.fun</span></span>
+  </a>
+  <span class="bar-rule" aria-hidden="true"></span>
+  <span class="bar-tag" id="bar-tag">board</span>
+  <nav class="bar-nav" aria-label="Top bar controls">
+    <a class="ico" href="#/hunters" title="Hunters ranked by prize money" aria-label="Hunters ranked by prize money">
+      <span class="ico-g" aria-hidden="true">≡</span>
+    </a>
+    <button class="ico" id="refresh-btn" type="button" title="Refresh live data" aria-label="Refresh live data"><span aria-hidden="true">↻</span></button>
+    <button class="ico" id="theme-btn" type="button" title="Toggle theme" aria-label="Toggle theme">
+      <span class="ico-g" aria-hidden="true">◐</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <div class="shell">
+    <nav class="rail" id="rail" aria-label="Bounty workflow"></nav>
+    <div class="stage" id="stage"></div>
+  </div>
+</main>
+
+<footer class="foot">
+  <p class="foot-line">
+    <span>read-only client of the public make.fun API</span>
+    <span class="foot-sep" aria-hidden="true">/</span>
+    <a href="#/">board</a>
+    <span class="foot-sep" aria-hidden="true">/</span>
+    <a href="#/hunters">hunters</a>
+  </p>
+</footer>
+</body>
+</html>

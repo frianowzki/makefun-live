@@ -1,0 +1,10 @@
+{
+  "name": "makefun-live",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serve.ts --port 8125",
+    "artifact": "node main.ts",
+    "verify": "node scripts/acceptance.mjs"
+  }
+}
