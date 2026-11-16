@@ -1,0 +1,20 @@
+# secrets and credentials never belong in the repository
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+wallet.json
+.makefun/credentials
+
+# build output, dependencies and tool caches
+out/
+node_modules/
+
+# deploy platforms and local evidence
+.vercel/
+evidence/
+logs/
+*.log
+screenshots-more/
+evidence-more/

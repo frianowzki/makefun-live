@@ -1,0 +1,17 @@
+{
+  "name": "makefun-frontend-01",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Makefun Live — an independent static frontend for make.fun bounties, leaderboards and hunters.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "serve": "node serve.ts",
+    "start": "node serve.ts --port 8080",
+    "build": "node main.ts",
+    "verify": "node scripts/verify.mjs",
+    "shots": "node scripts/verify.mjs --shots",
+    "check": "node scripts/verify.mjs"
+  }
+}

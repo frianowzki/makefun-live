@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // Before first paint: the stored theme is applied so a reload never flashes the other one.
+  // Same key main.js writes; a value set by a capture's init script is kept.
+  try {
+    var saved = null;
+    try { saved = localStorage.getItem('makefun-live.theme'); } catch (e) { saved = null; }
+    document.documentElement.setAttribute('data-theme', saved === 'light' || saved === 'dark' ? saved : 'dark');
+  } catch (e) { /* keep the default */ }
+</script>
+<title>Makefun Live — live make.fun bounties, leaderboards and hunters</title>
+<meta name="description" content="Makefun Live: a fast, quiet reader for make.fun. Open bounties with live pots, fees and deadlines, each bounty's leaderboard, and the paid hunter ranking. Static files on make.fun's public API.">
+<meta name="theme-color" content="#10151a">
+<meta http-equiv="color-scheme" content="dark light">
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" id="skip-link">Skip to content</a>
+
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="Makefun Live, home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-word">makefun<span class="brand-live">live</span></span>
+    </a>
+    <nav class="rail-mobile" aria-label="Sections">
+      <a href="#/" data-nav="board">Board</a>
+      <a href="#/hunters" data-nav="hunters">Hunters</a>
+    </nav>
+    <div class="controls" role="group" aria-label="Page controls">
+      <a class="icon-btn" href="#/" id="ctl-home" title="Home: the live board" aria-label="Home: the live board">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="icon-btn" href="#/hunters" id="ctl-rank" data-nav="hunters" title="The paid hunter ranking" aria-label="The paid hunter ranking">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 20v-7M12 20V6M19 20v-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M3 20h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </a>
+      <button class="icon-btn" type="button" id="ctl-theme" title="Switch to the light theme" aria-label="Switch to the light theme" aria-pressed="true">
+        <svg class="ico-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8.2 8.2 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" type="button" id="ctl-refresh" title="Reload the board from make.fun" aria-label="Reload the board from make.fun">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.6-5.9M20 4v4.4h-4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="rail" aria-label="Sidebar">
+      <nav class="rail-nav" aria-label="Sections">
+        <p class="rail-label">Browse</p>
+        <a href="#/" data-nav="board"><span class="rail-dot" aria-hidden="true"></span>Live board</a>
+        <a href="#/hunters" data-nav="hunters"><span class="rail-dot" aria-hidden="true"></span>Hunters ranking</a>
+      </nav>
+      <div class="rail-note">
+        <p class="rail-label">Source</p>
+        <p>Read-only, straight from <span class="mono">make.fun/api</span>. No account, no writes, nothing stored but your theme.</p>
+      </div>
+      <p class="rail-stamp" id="rail-stamp">Read from make.fun/api</p>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <div id="view" aria-busy="true">
+        <div id="page-head"></div>
+        <div id="page-body">
+          <div class="skeleton" aria-hidden="true">
+            <div class="sk-line w40"></div><div class="sk-line w70"></div>
+            <div class="sk-row"></div><div class="sk-row"></div><div class="sk-row"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <p><strong>Makefun Live</strong> — an independent reader for make.fun bounties, leaderboards and hunters. Every figure is make.fun&rsquo;s own; this app only formats it.</p>
+      <p class="foot-links"><a href="https://make.fun" rel="noopener noreferrer">make.fun</a><a href="https://make.fun/api/openapi.json" rel="noopener noreferrer">The public API</a><a href="#/hunters">Hunters</a></p>
+    </footer>
+  </div>
+</div>
+
+<noscript><p class="noscript">Makefun Live needs JavaScript: it reads make.fun&rsquo;s public API in your browser.</p></noscript>
+</body>
+</html>
